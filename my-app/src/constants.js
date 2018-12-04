@@ -33,7 +33,9 @@ const age_options = [{value: 1, label: "1"}, {value: 2, label: "2"},
     {value: 96, label: "96"}, {value: 97, label: "97"}, {value: 98, label: "98"}, 
     {value: 99, label: "99"}, {value: 100, label: "100"}];
 
-const category_array = ["Age"];
-const options_array = [age_options];
+const gender_options = [{value: 1, label: "Female"}, {value: 2, label: "Male"}];
+
+const category_array = ["Age", "Gender"];
+const options_array = [age_options, gender_options];
 
 export {category_array, options_array};

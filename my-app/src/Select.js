@@ -10,6 +10,7 @@ export default class Select extends React.Component {
 
     handleChange = (selectedOption) => {
         this.setState({ selectedOption });
+        this.props.onFieldSelected(selectedOption.label);
     }
 
     render() {
@@ -29,7 +30,6 @@ export default class Select extends React.Component {
                     value={selectedOption}> 
                 </ReactSelect>
             </div>
-            
         );
     }
 }
