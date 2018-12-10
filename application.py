@@ -1,9 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, json
 
 application = Flask(__name__)
 
 
-def predict_outcome(age, gender):
+def predict_outcome(age, gender, factory):
     outcome = {'Risk': 'High'}
     return outcome
 
@@ -12,8 +12,10 @@ def predict_outcome(age, gender):
 def predict():
     gender = request.args.get('gender')
     age = request.args.get('age')
-    result = predict_outcome(age, gender)
-    return jsonify(result)
+    factory = request.args.get('factory')
+    result = predict_outcome(age, gender, factory)
+    headers = {'content-type': 'application/json', 'Access-Control-Allow-Origin': "*"}
+    return application.make_response((json.dumps(result), 200, headers))
 
 
 # run the app.
