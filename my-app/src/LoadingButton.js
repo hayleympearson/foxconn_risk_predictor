@@ -19,6 +19,7 @@ export default class LoadingButton extends React.Component {
   
         console.log(this.props.age);
         console.log(this.props.gender);
+        console.log(this.props.factory);
 
         //TODO: change this to real endpoint
         fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}`, {
@@ -57,9 +58,10 @@ export default class LoadingButton extends React.Component {
                 onClick={!isLoading ? this.handleClick : null}>
                 {isLoading ? 'Loading...' : 'Submit'}
                 </button>
-                <h2>
+                
+                {/* <h2>
                     {loaded ? 'Success! ' : "Please enter your information"}
-                </h2>
+                </h2> */}
             </div>
 
 
