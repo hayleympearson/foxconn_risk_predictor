@@ -38,7 +38,7 @@ export default class App extends React.Component {
         <Select category={"Gender"} onFieldSelected={this.genderSelected}/>
         <Select category={"Factory"} onFieldSelected={this.factorySelected}/>
         
-        <LoadingButton age={this.state.age} gender={this.state.gender}/>
+        <LoadingButton age={this.state.age} gender={this.state.gender} factory={this.state.factory}/>
       </div>
     );
   }
