@@ -57,9 +57,10 @@ export default class LoadingButton extends React.Component {
                 onClick={!isLoading ? this.handleClick : null}>
                 {isLoading ? 'Loading...' : 'Submit'}
                 </button>
-                <h2>
+                
+                {/* <h2>
                     {loaded ? 'Success! ' : "Please enter your information"}
-                </h2>
+                </h2> */}
             </div>
 
 
