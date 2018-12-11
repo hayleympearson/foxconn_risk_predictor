@@ -22,7 +22,7 @@ export default class LoadingButton extends React.Component {
 
         setTimeout(() => {
             // Completed of async action, set loading state back
-            fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}&factory=${encodeURIComponent(this.props.factory)}`, {
+            fetch(`http://flask-foxconn-predictor-prod.us-east-2.elasticbeanstalk.com/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}&factory=${encodeURIComponent(this.props.factory)}`, {
                 method: "GET",
             }).then(res => res.json())
             .then(

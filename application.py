@@ -3,6 +3,10 @@ import numpy
 import pandas as pd
 from sklearn.naive_bayes import GaussianNB
 
+import sys
+import os
+sys.path.append("/opt/python/current/app")
+
 AGES = [x for x in range(101)]
 GENDER = ['male','female']
 FACTORY = ['longhua', 'langfang','guanlan', 'nanhai', 'kunshan','chengdu', 'taiyuan']
