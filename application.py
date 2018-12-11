@@ -6,7 +6,11 @@ from sklearn.naive_bayes import GaussianNB
 AGES = [x for x in range(101)]
 GENDER = ['male','female']
 FACTORY = ['longhua', 'langfang','guanlan', 'nanhai', 'kunshan','chengdu', 'taiyuan']
-def initialize_classifer(filename):
+FACTORY_SIZES = {'longhua': 1, 'langfang': 1, 'nanhai':1, 'kunshan':1,'chengdu':1, 'taiyuan':1}
+RISKS = ['high', 'moderate', 'low']
+
+
+def initialize_suicide_classifer(filename):
     data = pd.read_csv(filename)
 
     # Convert categorical variable to numeric
@@ -33,21 +37,47 @@ def initialize_classifer(filename):
     return gnb
 
 
-classifier = initialize_classifer('foxconn_data.csv')
+suicide_classifier = initialize_suicide_classifer('foxconn_data.csv')
+
+
+def initialize_accident_classifier(filename):
+    data = pd.read_csv(filename)
+    data["factory_size_cleaned"] = numpy.where(data["Factory size"] == "Less than 50", 0,
+                                          numpy.where(data["Factory size"] == "50-249", 1,
+                                                      numpy.where(data["Factory size"] == "250-499", 2,
+                                                                  numpy.where(data["Factory size"] == "500-999", 3,
+                                                                              numpy.where(
+                                                                                  data["Factory size"] == "More than 1,000",
+                                                                                  4,5)))))
+    data = data[["factory_size_cleaned", "Accidents", "Category"]].dropna(axis=0, how='any')
+    gnb = GaussianNB()
+    used_features = ["factory_size_cleaned"]
+
+    # Train classifier
+    features = data[used_features].values
+    target = data["Category"]
+    gnb.fit(
+        features,
+        target
+    )
+    return gnb
+
+
+accident_classifier = initialize_accident_classifier('accident_data.csv')
 application = Flask(__name__)
 
 
-def predict_outcome(age_raw, gender_raw, factory_raw, classifier):
+def predict_suicide_outcome(age_raw, gender_raw, factory_raw, classifier):
     gender = 0
     age = 0
     factory = 0
     if int(age_raw) in AGES:
         age = int(age_raw)
         # TODO: handle error
-    if gender_raw.lower() in GENDER:
-        gender = GENDER.index(gender_raw.lower())
-    if factory_raw.lower() in FACTORY:
-        factory = FACTORY.index(factory_raw.lower)
+    if str(gender_raw).lower() in GENDER:
+        gender = GENDER.index(str(gender_raw).lower())
+    if str(factory_raw).lower() in FACTORY:
+        factory = FACTORY.index(str(factory_raw).lower())
     test_vector = numpy.array([gender, age, factory]).reshape(1, -1)
     prob = classifier.predict_proba(test_vector)[0]
     if prob < .33:
@@ -56,9 +86,17 @@ def predict_outcome(age_raw, gender_raw, factory_raw, classifier):
         suicide_risk = 'moderate'
     else:
         suicide_risk = 'high'
-    outcomes = {'accident_risk': 'high', 'suicide_risk': suicide_risk}
 
-    return outcomes
+    return suicide_risk
+
+
+def predict_accident_outcome(factory_raw, classifier):
+    factory_size = 0
+    if str(factory_raw).lower() in FACTORY:
+        factory = str(factory_raw).lower()
+        factory_size = FACTORY_SIZES[factory]
+    risk = classifier.predict([[factory_size]])[0]
+    return RISKS[risk]
 
 
 @application.route('/predict')
@@ -66,9 +104,11 @@ def predict():
     gender = request.args.get('gender')
     age = request.args.get('age')
     factory = request.args.get('factory')
-    result = predict_outcome(age, gender, factory, classifier)
+    suicide_outcome = predict_suicide_outcome(age, gender, factory, suicide_classifier)
+    accident_outcome = predict_accident_outcome(factory, accident_classifier)
+    outcomes = {'accident_risk': accident_outcome, 'suicide_risk': suicide_outcome}
     headers = {'content-type': 'application/json', 'Access-Control-Allow-Origin': "*"}
-    return application.make_response((json.dumps(result), 200, headers))
+    return application.make_response((json.dumps(outcomes), 200, headers))
 
 
 # run the app.
