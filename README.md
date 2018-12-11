@@ -2,7 +2,10 @@ The front-end of this web application is built on the React Framework. At the hi
 
 Limitations of this project include the following, which definitely open up the potential for improvement in a following undertaking:
 - all fields must be filled out in order to submit a request
+- not all Foxconn factories are listed as choices (due to the lack of data mentioned below)
 - decisions are made based on a very small set of data (https://docs.google.com/spreadsheets/d/1sP8kPeVWWiTosYN5_VaNdnJweF02rveQJ47A21830wQ/edit?usp=sharing)
+
+Articles that were used for data collection can be found in the 'articles' folder.
 
 ------------------------------------------------------------------------------------------------------------------------------
 
