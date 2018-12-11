@@ -30,13 +30,13 @@ export default class LoadingButton extends React.Component {
                 method: "GET",
             }).then(res => res.json())
             .then(
-                (result) => {
+                (res) => {
                     this.setState({
                         isLoading: false,
                         loaded: true,
                         items: {
-                            accident_risk: result.items.accident_risk,
-                            suicide_risk: result.items.suicide_risk,
+                            accident_risk: res['accident_risk'],
+                            suicide_risk: res['suicide_risk'],
                         }, 
                     });
                     this.props.onResponse(this.state.items);
