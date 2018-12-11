@@ -6,7 +6,7 @@ from sklearn.naive_bayes import GaussianNB
 AGES = [x for x in range(101)]
 GENDER = ['male','female']
 FACTORY = ['longhua', 'langfang','guanlan', 'nanhai', 'kunshan','chengdu', 'taiyuan']
-FACTORY_SIZES = {'longhua': 1, 'langfang': 1, 'nanhai':1, 'kunshan':1,'chengdu':1, 'taiyuan':1}
+FACTORY_SIZES = {'longhua': 4, 'langfang': 4, 'nanhai': 4, 'kunshan': 4,'chengdu': 4, 'taiyuan': 4}
 RISKS = ['high', 'moderate', 'low']
 
 
