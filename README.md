@@ -5,6 +5,8 @@ Limitations of this project include the following, which definitely open up the 
 - not all Foxconn factories are listed as choices (due to the lack of data mentioned below)
 - decisions are made based on a very small set of data (https://docs.google.com/spreadsheets/d/1sP8kPeVWWiTosYN5_VaNdnJweF02rveQJ47A21830wQ/edit?usp=sharing)
 
+Articles that were used for data collection can be found in the 'articles' folder.
+
 ------------------------------------------------------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
