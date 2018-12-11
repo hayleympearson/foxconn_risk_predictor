@@ -35,8 +35,8 @@ export default class LoadingButton extends React.Component {
                         isLoading: false,
                         loaded: true,
                         items: {
-                            accident_risk: result.items.accident_risk,
-                            suicide_risk: result.items.suicide_risk,
+                            accident_risk: items['accident_risk'],
+                            suicide_risk: items['suicide_risk'],
                         }, 
                     });
                     this.props.onResponse(this.state.items);
