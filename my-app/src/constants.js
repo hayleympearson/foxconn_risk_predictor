@@ -35,9 +35,9 @@ const age_options = [{value: 1, label: "1"}, {value: 2, label: "2"},
 
 const gender_options = [{value: 1, label: "Female"}, {value: 2, label: "Male"}];
 
-const factory_options = [{value: 1, label: "Chengdu"}, {value: 2, label: "Guanfan"}, 
+const factory_options = [{value: 1, label: "Chengdu"}, {value: 2, label: "Guanlan"}, 
     {value: 3, label: "Kunshan"}, {value: 4, label: "Langfang"}, {value: 5, label: "Longhua"}, 
-    {value: 6, label: "Nanhal"}, {value: 7, label: "Taiyuan"}];
+    {value: 6, label: "Taiyuan"}];
 
 const category_array = ["Age", "Gender", "Factory"];
 const options_array = [age_options, gender_options, factory_options];
