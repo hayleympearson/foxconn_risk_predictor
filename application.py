@@ -11,7 +11,7 @@ AGES = [x for x in range(101)]
 GENDER = ['male','female']
 FACTORY = ['longhua', 'langfang','guanlan', 'nanhai', 'kunshan','chengdu', 'taiyuan']
 FACTORY_SIZES = {'longhua': 4, 'langfang':4, 'guanlan': 4, 'nanhai': 4, 'kunshan': 4,'chengdu': 4, 'taiyuan': 4}
-RISKS = ['high', 'moderate', 'low']
+RISKS = ['low', 'moderate', 'high']
 
 
 def initialize_suicide_classifer(filename):
