@@ -4,6 +4,8 @@ Limitations of this project include the following, which definitely open up the 
 1. all fields must be filled out in order to submit a request
 2. decisions are made based on a very small set of data
 
+------------------------------------------------------------------------------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
