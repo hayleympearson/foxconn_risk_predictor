@@ -72,7 +72,7 @@ export default class App extends React.Component {
 
             <p>
               {action_text[0]}
-              <a href="http://www.sacom.hk" target="_blank">sacom.hk</a>
+              <a href="http://www.sacom.hk" target="_blank" rel="noopener noreferrer">sacom.hk</a>
               {action_text[1]}
             </p>
           </div>
