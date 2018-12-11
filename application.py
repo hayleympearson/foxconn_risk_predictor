@@ -4,7 +4,7 @@ application = Flask(__name__)
 
 
 def predict_outcome(age, gender, factory):
-    outcome = {'Risk': 'High'}
+    outcome = {'accident_risk': 'high', 'suicide_risk':'high'}
     return outcome
 
 
