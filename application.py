@@ -37,6 +37,7 @@ classifier = initialize_classifer('foxconn_data.csv')
 application = Flask(__name__)
 
 
+
 def predict_outcome(age_raw, gender_raw, factory_raw, classifier):
     gender = 0
     age = 0
@@ -59,6 +60,7 @@ def predict_outcome(age_raw, gender_raw, factory_raw, classifier):
     outcomes = {'accident_risk': 'high', 'suicide_risk': suicide_risk}
 
     return outcomes
+
 
 
 @application.route('/predict')
