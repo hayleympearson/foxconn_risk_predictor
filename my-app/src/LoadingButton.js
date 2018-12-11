@@ -10,47 +10,53 @@ export default class LoadingButton extends React.Component {
             error : null,
             isLoading: false,
             loaded: false,
-            items : []
+            items : {
+                accident_risk: null,
+                suicide_risk: null,
+            },
         };
     }
   
     handleClick() {
         this.setState({ isLoading: true });
   
-        console.log(this.props.age);
-        console.log(this.props.gender);
-        console.log(this.props.factory);
-
-        //TODO: change this to real endpoint
-        fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}`, {
-        method: "GET",
-        }).then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoading: false,
-            items: result.items, loaded: true
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoading: false,
-            error: true,
-          });
-        }
-      )
+        // console.log(this.props.age);
+        // console.log(this.props.gender);
+        // console.log(this.props.factory);
         
-        // setTimeout(() => {
-        //     // Completed of async action, set loading state back
-        //     this.setState({ isLoading: false });
-        //     }, 2000);
-        }
+        setTimeout(() => {
+            // Completed of async action, set loading state back
+            fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}`, {
+                method: "GET",
+            }).then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoading: false,
+                        loaded: true,
+                        items: {
+                            accident_risk: result.items.accident_risk,
+                            suicide_risk: result.items.suicide_risk,
+                        }, 
+                    });
+                    this.props.onResponse(this.state.items);
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        error: true,
+                        isLoading: false,
+                    });
+                }
+            )
+        }, 1000);
+    }
   
     render() {
-            const { error, isLoading, loaded, items } = this.state;
+        const {isLoading} = this.state;
+        
         return (
             <div>
                <button
@@ -58,13 +64,7 @@ export default class LoadingButton extends React.Component {
                 onClick={!isLoading ? this.handleClick : null}>
                 {isLoading ? 'Loading...' : 'Submit'}
                 </button>
-                
-                {/* <h2>
-                    {loaded ? 'Success! ' : "Please enter your information"}
-                </h2> */}
             </div>
-
-
         );
     }
 }
