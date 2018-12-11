@@ -51,6 +51,15 @@ export default class LoadingButton extends React.Component {
                     });
                 }
             )
+            // this.setState({
+            //     isLoading: false,
+            //     loaded: true,
+            //     items: {
+            //         accident_risk: "high",
+            //         suicide_risk: "low",
+            //     }, 
+            // });
+            // this.props.onResponse(this.state.items);
         }, 1000);
     }
   
