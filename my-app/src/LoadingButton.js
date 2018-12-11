@@ -25,32 +25,41 @@ export default class LoadingButton extends React.Component {
         // console.log(this.props.factory);
         
         setTimeout(() => {
-            // Completed of async action, set loading state back
-            fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}`, {
-                method: "GET",
-            }).then(res => res.json())
-            .then(
-                (res) => {
-                    this.setState({
-                        isLoading: false,
-                        loaded: true,
-                        items: {
-                            accident_risk: res['accident_risk'],
-                            suicide_risk: res['suicide_risk'],
-                        }, 
-                    });
-                    this.props.onResponse(this.state.items);
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        error: true,
-                        isLoading: false,
-                    });
-                }
-            )
+            // // Completed of async action, set loading state back
+            // fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}`, {
+            //     method: "GET",
+            // }).then(res => res.json())
+            // .then(
+            //     (res) => {
+            //         this.setState({
+            //             isLoading: false,
+            //             loaded: true,
+            //             items: {
+            //                 accident_risk: res['accident_risk'],
+            //                 suicide_risk: res['suicide_risk'],
+            //             }, 
+            //         });
+            //         this.props.onResponse(this.state.items);
+            //     },
+            //     // Note: it's important to handle errors here
+            //     // instead of a catch() block so that we don't swallow
+            //     // exceptions from actual bugs in components.
+            //     (error) => {
+            //         this.setState({
+            //             error: true,
+            //             isLoading: false,
+            //         });
+            //     }
+            // )
+            this.setState({
+                isLoading: false,
+                loaded: true,
+                items: {
+                    accident_risk: "high",
+                    suicide_risk: "low",
+                }, 
+            });
+            this.props.onResponse(this.state.items);
         }, 1000);
     }
   
