@@ -2,7 +2,7 @@ The front-end of this web application is built on the React Framework. At the hi
 
 Limitations of this project include the following, which definitely open up the potential for improvement in a following undertaking:
 1. all fields must be filled out in order to submit a request
-2. decisions are made based on a very small set of data
+2. decisions are made based on a very small set of data (https://docs.google.com/spreadsheets/d/1sP8kPeVWWiTosYN5_VaNdnJweF02rveQJ47A21830wQ/edit?usp=sharing)
 
 ------------------------------------------------------------------------------------------------------------------------------
 
