@@ -42,4 +42,17 @@ const factory_options = [{value: 1, label: "Chengdu"}, {value: 2, label: "Guanfa
 const category_array = ["Age", "Gender", "Factory"];
 const options_array = [age_options, gender_options, factory_options];
 
-export {category_array, options_array};
+
+const accident_text1 = "Based on your entered information, you are at ";
+const accident_text2 = " risk of serious occupational accident. One Foxconn worker was left brain damaged after an electric shock in 2011. An explosion in one factory killed four people and injured another 18 in the same year.";
+const accident_text = [accident_text1, accident_text2];
+
+const suicide_text1 = "Also based on your entered information, you are at ";
+const suicide_text2 = " risk of an adverse mental health outcome. Foxconn was hit by a wave of worker suicides in 2010, and other incidents have occured since.";
+const suicide_text = [suicide_text1, suicide_text2];
+
+const action_text1 = "If you would like to take action against such injustices, visit ";
+const action_text2 = " to join Students and Scholars Against Corporate Misbehavior in the strike for social justice.";
+const action_text = [action_text1, action_text2];
+
+export {category_array, options_array, accident_text, suicide_text, action_text};
