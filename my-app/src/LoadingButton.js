@@ -22,7 +22,7 @@ export default class LoadingButton extends React.Component {
 
         setTimeout(() => {
             // Completed of async action, set loading state back
-            fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}&factory=${encodeURIComponent(this.props.gender)}`, {
+            fetch(`http://127.0.0.1:5000/predict?age=${encodeURIComponent(this.props.age)}&gender=${encodeURIComponent(this.props.gender)}&factory=${encodeURIComponent(this.props.factory)}`, {
                 method: "GET",
             }).then(res => res.json())
             .then(
@@ -65,7 +65,7 @@ export default class LoadingButton extends React.Component {
         return (
             <div>
                <button
-                disabled={isLoading}
+                disabled={isLoading || !this.props.age || !this.props.gender || !this.props.factory}
                 onClick={!isLoading ? this.handleClick : null}>
                 {isLoading ? 'Loading...' : 'Submit'}
                 </button>
